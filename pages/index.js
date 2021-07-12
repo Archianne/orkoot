@@ -1,23 +1,35 @@
-import styled from "styled-components";
+import MainGrid from "../src/components/MainGrid";
+import Box from "../src/components/Box";
+import { AlurakutMenu } from "../src/lib/commons"
 
-// const Title = styled.h1`
-//   font-size: 50px;
-//   color: ${({ theme }) => theme.colors.primary};
-// `;
-
-const Box = styled.div`
-  background: #ffffff;
-  border-radius: 8px;
-`;
+const ProfileSidebar = (prop) => {
+  return (
+    <Box>
+      <img
+        src={`https://github.com/archianne.png`}
+        alt="Profile Picture"
+        style={{ borderRadius: "8px" }}
+      />
+    </Box>
+  );
+};
 
 export default function Home() {
+  const githubUser = "Archianne";
   return (
-    <main>
-      kkkkkk
-
-      Imagem
-      Bem vindo
-      Comunidades
-    </main>
+    <>
+    <AlurakutMenu />
+    <MainGrid>
+      <div className="profileArea" style={{ gridArea: "profileArea" }}></div>
+      <ProfileSidebar githubUser={githubUser} />
+      <div className="welcomeArea" style={{ gridArea: "welcomeArea" }}>
+        <Box>Bem vindo</Box>
+      </div>
+      <div className="socialArea" style={{ gridArea: "socialArea" }}>
+        <Box>Amigos</Box>
+        <Box>Comunidades</Box>
+      </div>
+    </MainGrid>
+  </>
   );
 }
