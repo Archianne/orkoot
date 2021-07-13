@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import MainGrid from "../src/components/MainGrid";
 import Box from "../src/components/Box";
 import { SocialAreaBoxWrapper } from "../src/components/socialArea";
@@ -26,8 +27,23 @@ const ProfileSidebar = (prop) => {
 };
 
 export default function Home() {
+  const [comunidades, setComunidades] = useState([
+    {
+      id: "1",
+      title: "Eu odeio acordar cedo",
+      image:
+        "https://pbs.twimg.com/profile_images/143696361/avatar_400x400.jpg",
+    },
+  ]);
   const githubUser = "Archianne";
-  const gitFavourites = ["juunegreiros", "a", "b", "g", "d", "e"];
+  const gitFavourites = [
+    "inesperez",
+    "Jordaneddielinton93",
+    "JHannah30",
+    "Anna-MarieMoss",
+    "danitacodes",
+    "isacoper",
+  ];
 
   return (
     <>
@@ -38,41 +54,55 @@ export default function Home() {
           style={{ gridArea: "profileArea", backgroundColor: "blue" }}
         ></div>
         <ProfileSidebar githubUser={githubUser} />
+
         <div className="welcomeArea" style={{ gridArea: "welcomeArea" }}>
           <Box>
-            <h1 className="title">Bem Vindo</h1>
+            <h1 className="title">Bem Vindo(a)</h1>
             <OrkutNostalgicIconSet />
           </Box>
 
           <Box>
             <h2>O que você deseja fazer?</h2>
 
-            <form>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const dataForm = new FormData(e.target);
+
+                const comunidade = {
+                  id: new Date(),
+                  title: dataForm.get("title"),
+                  image: dataForm.get("image"),
+                };
+                const comunidadesAtt = [...comunidades, comunidade];
+                setComunidades(comunidadesAtt);
+                console.log(comunidades);
+              }}
+            >
               <input
                 placeholder="Qual vai ser o nome da sua comunidade?"
                 type="text"
                 name="title"
-                ariaLabel="Qual vai ser o nome da sua comunidade?"
+                aria-label="Qual vai ser o nome da sua comunidade?"
               />
               <input
                 placeholder="Coloque uma URL para usarmos de capa"
                 type="text"
                 name="image"
-                ariaLabel="Coloque uma URL para usarmos de capa"
+                aria-label="Coloque uma URL para usarmos de capa"
               />
-              <button>
-                Criar comunidade
-              </button>
+              <button>Criar comunidade</button>
             </form>
           </Box>
         </div>
+
         <div className="socialArea" style={{ gridArea: "socialArea" }}>
           <SocialAreaBoxWrapper>
-            <h2 className="smallTitle">Friends ({gitFavourites.length})</h2>
+            <h2 className="smallTitle">amigos ({gitFavourites.length})</h2>
             <ul>
               {gitFavourites.map((friend) => {
                 return (
-                  <li>
+                  <li key={friend}>
                     <a href={`/users/${friend}`} key={friend}>
                       <img
                         src={`https://github.com/${friend}.png`}
@@ -85,7 +115,27 @@ export default function Home() {
               })}
             </ul>
           </SocialAreaBoxWrapper>
-          <Box>Comunidades</Box>
+          <SocialAreaBoxWrapper>
+            <h2 className="smallTitle">comunidades ({comunidades.length})</h2>
+            <ul>
+              {comunidades.map((comunidade) => {
+                return (
+                  <li key={comunidade.id}>
+                    <a
+                      href={`/users/${comunidade.title}`}
+                      key={comunidade.title}
+                    >
+                      <img
+                        src={`${comunidade.image}`}
+                        alt="Comunidade Picture"
+                      />
+                      <span>{comunidade.title}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </SocialAreaBoxWrapper>
         </div>
       </MainGrid>
     </>
