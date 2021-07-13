@@ -21,7 +21,7 @@ export function AlurakutMenu({ githubUser }) {
   return (
     <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen}>
       <div className="container">
-        <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} />
+        <AlurakutMenu.Logo src={`https://www.dafont.com/forum/attach/orig/7/9/791715.png`} />
 
         <nav style={{ flex: 1 }}>
           {[
@@ -162,7 +162,7 @@ AlurakutMenu.Wrapper = styled.header`
 `;
 AlurakutMenu.Logo = styled.img`
   background-color: #ffffff;
-  padding: 9px 14px;
+  padding: 7px 14px;
   border-radius: 1000px;
   height: 34px;
 `;

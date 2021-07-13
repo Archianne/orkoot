@@ -9,9 +9,6 @@ const MainGrid = styled.main`
   padding: 16px;
   .profileArea {
     display: none;
-    @media(min-width: 860px) {
-      display: block;
-    }
   }
   @media(min-width: 860px) {
     max-width: 1110px;
