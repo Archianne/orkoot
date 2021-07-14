@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
+import NavBar from "../src/components/NavBar";
 import Box from "../src/components/Box";
 import MainGrid from "../src/components/MainGrid";
 import { ProfileSidebar } from "../src/components/ProfileSidebar";
+import NostalgicIconSet from "../src/NostalgicIconSet";
 import ComunidadeForm from "../src/components/ComunidadeForm";
 import {
   SocialAreaBox,
   FollowersBox,
   ComunidadesBox,
 } from "../src/components/SocialAreaBox";
-import {
-  AlurakutMenu,
-  AlurakutProfileSidebarMenuDefault,
-  OrkutNostalgicIconSet,
-} from "../src/lib/commons";
 
 export default function Home() {
   const [comunidades, setComunidades] = useState([
@@ -48,7 +45,7 @@ export default function Home() {
 
   return (
     <>
-      <AlurakutMenu />
+      <NavBar />
       <MainGrid>
         <div
           className="profileArea"
@@ -59,7 +56,7 @@ export default function Home() {
         <div className="welcomeArea" style={{ gridArea: "welcomeArea" }}>
           <Box>
             <h1 className="title">Bem Vindo(a)</h1>
-            <OrkutNostalgicIconSet />
+            <NostalgicIconSet />
           </Box>
 
           <ComunidadeForm

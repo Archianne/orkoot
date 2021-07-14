@@ -20,7 +20,7 @@ export const ProfileSidebar = (prop) => {
   );
 };
 
-export function ProfileSidebarMenu() {
+export const ProfileSidebarMenu = () => {
   return (
     <ProfileSidebarMenuWrapper>
       <nav>
