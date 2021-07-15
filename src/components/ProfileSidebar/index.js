@@ -7,12 +7,12 @@ export const ProfileSidebar = (prop) => {
   return (
     <Box>
       <img
-        src={`https://github.com/${prop.githubUser}.png`}
+        src={`https://github.com/${prop.githubUser.login}.png`}
         style={{ borderRadius: "8px" }}
       />
       <hr />
-      <a href={`https://github.com/${prop.githubUser}`} className="boxLink">
-        @{prop.githubUser}
+      <a href={`https://github.com/${prop.githubUser.login}`} className="boxLink">
+        {prop.githubUser.name}
       </a>
       <hr />
       <ProfileSidebarMenu />

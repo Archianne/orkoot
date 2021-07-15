@@ -20,7 +20,7 @@ export default function Home() {
         "https://pbs.twimg.com/profile_images/143696361/avatar_400x400.jpg",
     },
   ]);
-  const githubUser = "Archianne";
+  // const githubUser = "Archianne";
   const gitFavourites = [
     "inesperez",
     "Jordaneddielinton93",
@@ -30,6 +30,7 @@ export default function Home() {
     "isacoper",
   ];
   const [followers, setFollowers] = useState([]);
+  const [githubUser, setGithubUser] = useState([]);
 
   useEffect(() => {
     const URL = "https://api.github.com/users/Archianne/followers";
@@ -39,6 +40,18 @@ export default function Home() {
       })
       .then((data) => {
         setFollowers(data);
+        console.log(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    const URL = "https://api.github.com/users/Archianne";
+    const githubUser = fetch(URL)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setGithubUser(data);
         console.log(data);
       });
   }, []);
