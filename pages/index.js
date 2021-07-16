@@ -3,15 +3,12 @@ import NavBar from "../src/components/NavBar";
 import Box from "../src/components/Box";
 import MainGrid from "../src/components/MainGrid";
 import { ProfileSidebar } from "../src/components/ProfileSidebar";
-import NostalgicIconSet from "../src/NostalgicIconSet";
+import NostalgicIconSet from "../src/components/NostalgicIconSet";
 import ComunidadeForm from "../src/components/ComunidadeForm";
-import {
-  FollowersBox,
-  ComunidadesBox,
-} from "../src/components/SocialAreaBox";
+import { FollowersBox, ComunidadesBox } from "../src/components/SocialAreaBox";
 
 const HomePage = () => {
-  const [comunidades, setComunidades] = useState([]); 
+  const [comunidades, setComunidades] = useState([]);
   const [followers, setFollowers] = useState([]);
   const [githubUser, setGithubUser] = useState([]);
 
@@ -98,6 +95,6 @@ const HomePage = () => {
       </MainGrid>
     </>
   );
-}
+};
 
 export default HomePage;

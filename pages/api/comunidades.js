@@ -7,9 +7,6 @@ export default async (request, response) => {
     const registerCreated = await client.items.create({
       itemType: "966842",
       ...request.body,
-      // title: "Comunidade de Teste",
-      // imageUrl: "https://github.com/omariosouto.png",
-      // creatorId: "omariosouto",
     });
 
     response.json({

@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from "react";
+import { useRouter } from "next/router"; //NextJS Hook
 
 const Login = () => {
+  const router = useRouter();
+  const [githubUser, setGithubUser] = useState([]);
+
   return (
     <main
       style={{
@@ -29,11 +33,34 @@ const Login = () => {
         </section>
 
         <section className="formArea">
-          <form className="box">
+          <form
+            className="box"
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              fetch("/api/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ githubUser: "archianne" }),
+              }).then(async (response) => {
+                const data = await response.json();
+                console.log(data.token);
+                router.push("/");
+              });
+            }}
+          >
             <p>
               Acesse agora mesmo com seu usuário do <strong>GitHub</strong>!
             </p>
-            <input placeholder="Usuário" />
+            <input
+              placeholder="Usuário"
+              value={githubUser}
+              onChange={(e) => {
+                setGithubUser(e.target.value);
+              }}
+            />
             <button type="submit">Login</button>
           </form>
 
