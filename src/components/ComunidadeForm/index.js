@@ -1,7 +1,6 @@
 import Box from "../Box";
 
 const ComunidadeForm = (prop) => {
-  const user = "archianne";
   return (
     <Box>
       <h2 className="smallTitle">O que você deseja fazer?</h2>
@@ -12,10 +11,9 @@ const ComunidadeForm = (prop) => {
           const dataForm = new FormData(e.target);
 
           const comunidade = {
-            // id: new Date(),
             title: dataForm.get("title"),
             imageUrl: dataForm.get("imageUrl"),
-            creatorId: user,
+            creatorId: prop.githubUser,
           };
 
           fetch("/api/comunidades", {

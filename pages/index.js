@@ -6,22 +6,12 @@ import { ProfileSidebar } from "../src/components/ProfileSidebar";
 import NostalgicIconSet from "../src/NostalgicIconSet";
 import ComunidadeForm from "../src/components/ComunidadeForm";
 import {
-  SocialAreaBox,
   FollowersBox,
   ComunidadesBox,
 } from "../src/components/SocialAreaBox";
 
 export default function Home() {
-  const [comunidades, setComunidades] = useState([]);
-  // const githubUser = "Archianne";
-  const gitFavourites = [
-    "inesperez",
-    "Jordaneddielinton93",
-    "JHannah30",
-    "Anna-MarieMoss",
-    "danitacodes",
-    "isacoper",
-  ];
+  const [comunidades, setComunidades] = useState([]); 
   const [followers, setFollowers] = useState([]);
   const [githubUser, setGithubUser] = useState([]);
 
@@ -48,10 +38,10 @@ export default function Home() {
   }, []);
 
   //API GRAPHQL
-    const TOKEN = "25acca2b4d69b8028d5c4269bc2946";
-    const URL = "https://graphql.datocms.com/";
+  const TOKEN = "25acca2b4d69b8028d5c4269bc2946";
+  const URL = "https://graphql.datocms.com/";
 
-    useEffect(() => {
+  useEffect(() => {
     fetch(URL, {
       method: "POST",
       headers: {
@@ -76,7 +66,7 @@ export default function Home() {
       .catch((error) => {
         console.log(error);
       });
-    });
+  });
 
   return (
     <>
@@ -97,12 +87,12 @@ export default function Home() {
           <ComunidadeForm
             comunidades={comunidades}
             setComunidades={setComunidades}
+            githubUser={githubUser}
           />
         </div>
 
         <div className="socialArea" style={{ gridArea: "socialArea" }}>
-          <FollowersBox title="followers" items={followers} />
-          <SocialAreaBox title="friends" items={gitFavourites} />
+          <FollowersBox title="friends" items={followers} />
           <ComunidadesBox comunidades={comunidades} />
         </div>
       </MainGrid>

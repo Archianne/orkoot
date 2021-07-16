@@ -1,31 +1,6 @@
 import styled from "styled-components";
 import Box from "../Box";
 
-export const SocialAreaBox = (prop) => {
-  return (
-    <SocialAreaBoxWrapper>
-      <h2 className="smallTitle">
-        {prop.title} ({prop.items.length})
-      </h2>
-      <ul>
-        {prop.items.slice(0, 6).map((item) => {
-          return (
-            <li key={item}>
-              <a href={`https://github.com/${item}`} key={item}>
-                <img
-                  src={`https://github.com/${item}.png`}
-                  alt="Friends Picture"
-                />
-                <span>{item}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </SocialAreaBoxWrapper>
-  );
-};
-
 export const FollowersBox = (prop) => {
   return (
     <SocialAreaBoxWrapper>
@@ -58,7 +33,7 @@ export const ComunidadesBox = (prop) => {
       <ul>
         {prop.comunidades.slice(0, 6).map((comunidade) => {
           return (
-            <li key={comunidade.id}>
+            <li key={comunidade.title}>
               <a href={`/comunidades/${comunidade.title}`}>
                 <img
                   src={
