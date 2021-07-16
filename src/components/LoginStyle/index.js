@@ -1,14 +1,6 @@
-import React from "react";
 import styled, { css } from "styled-components";
-import NextLink from "next/link";
 
-const BASE_URL = "http://alurakut.vercel.app/";
-const v = "1";
-
-// ================================================================================================================
-// Login Page
-// ================================================================================================================
-const AlurakutLoginScreen = css`
+export const LoginScreen = css`
   :root {
     --backgroundPrimary: #d9e6f6;
     --backgroundSecondary: #f1f9fe;
@@ -24,6 +16,7 @@ const AlurakutLoginScreen = css`
     --textQuarternaryColor: #c5c6ca;
     --commonRadius: 8px;
   }
+
   .loginScreen {
     padding: 16px;
     max-width: 1110px;
@@ -42,6 +35,7 @@ const AlurakutLoginScreen = css`
         "logoArea formArea"
         "footerArea footerArea";
     }
+
     .logoArea {
       grid-area: logoArea;
       background-color: var(--backgroundTertiary);
@@ -72,6 +66,7 @@ const AlurakutLoginScreen = css`
         margin-bottom: 36px;
       }
     }
+
     .formArea {
       grid-area: formArea;
       display: flex;
@@ -126,6 +121,7 @@ const AlurakutLoginScreen = css`
         }
       }
     }
+
     .footerArea {
       grid-area: footerArea;
       background-color: var(--backgroundQuarternary);
@@ -141,50 +137,4 @@ const AlurakutLoginScreen = css`
       }
     }
   }
-`;
-
-// ================================================================================================================
-// Reset Styles
-// ================================================================================================================
-export const AlurakutStyles = css`
-  *::-webkit-scrollbar {
-    width: 8px;
-  }
-  *::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  *::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-  *::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-  a,
-  button {
-    cursor: pointer;
-    transition: 0.3s;
-    outline: 0;
-    &:hover,
-    &:focus {
-      opacity: 0.8;
-    }
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
-  }
-  input {
-    transition: 0.3s;
-    outline: 0;
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
-    &:hover,
-    &:focus {
-      box-shadow: 0px 0px 5px #33333357;
-    }
-  }
-  ${AlurakutLoginScreen}
 `;

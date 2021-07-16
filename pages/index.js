@@ -10,7 +10,7 @@ import {
   ComunidadesBox,
 } from "../src/components/SocialAreaBox";
 
-export default function Home() {
+const HomePage = () => {
   const [comunidades, setComunidades] = useState([]); 
   const [followers, setFollowers] = useState([]);
   const [githubUser, setGithubUser] = useState([]);
@@ -99,3 +99,5 @@ export default function Home() {
     </>
   );
 }
+
+export default HomePage;
