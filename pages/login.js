@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router"; //NextJS Hook
+import nookies from "nookies";
 
 const Login = () => {
   const router = useRouter();
@@ -38,15 +39,19 @@ const Login = () => {
             onSubmit={(e) => {
               e.preventDefault();
 
-              fetch("/api/login", {
+              fetch("https://alurakut.vercel.app/api/login", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ githubUser: "archianne" }),
+                body: JSON.stringify({ githubUser: githubUser }),
               }).then(async (response) => {
                 const data = await response.json();
-                console.log(data.token);
+                const token = data.token;
+                nookies.set(null, "USER_TOKEN", token, {
+                  path: "/",
+                  maxAge: 86400 * 7,
+                });
                 router.push("/");
               });
             }}

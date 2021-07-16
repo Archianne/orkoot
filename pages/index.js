@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import nookies from "nookies";
+import jwt from "jsonwebtoken";
 import NavBar from "../src/components/NavBar";
 import Box from "../src/components/Box";
 import MainGrid from "../src/components/MainGrid";
@@ -7,13 +9,14 @@ import NostalgicIconSet from "../src/components/NostalgicIconSet";
 import ComunidadeForm from "../src/components/ComunidadeForm";
 import { FollowersBox, ComunidadesBox } from "../src/components/SocialAreaBox";
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const user = props.githubUser;
   const [comunidades, setComunidades] = useState([]);
   const [followers, setFollowers] = useState([]);
   const [githubUser, setGithubUser] = useState([]);
 
   useEffect(() => {
-    const URL = "https://api.github.com/users/Archianne/followers";
+    const URL = `https://api.github.com/users/${user}/followers`;
     const followers = fetch(URL)
       .then((response) => {
         return response.json();
@@ -24,7 +27,7 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    const URL = "https://api.github.com/users/Archianne";
+    const URL = `https://api.github.com/users/${user}`;
     const githubUser = fetch(URL)
       .then((response) => {
         return response.json();
@@ -98,3 +101,15 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  const token = cookies.USER_TOKEN;
+  const { githubUser } = jwt.decode(token);
+
+  return {
+    props: {
+      githubUser,
+    },
+  };
+}
