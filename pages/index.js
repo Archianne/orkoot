@@ -12,14 +12,7 @@ import {
 } from "../src/components/SocialAreaBox";
 
 export default function Home() {
-  const [comunidades, setComunidades] = useState([
-    {
-      id: "1",
-      title: "Eu odeio acordar cedo",
-      image:
-        "https://pbs.twimg.com/profile_images/143696361/avatar_400x400.jpg",
-    },
-  ]);
+  const [comunidades, setComunidades] = useState([]);
   // const githubUser = "Archianne";
   const gitFavourites = [
     "inesperez",
@@ -40,7 +33,6 @@ export default function Home() {
       })
       .then((data) => {
         setFollowers(data);
-        console.log(data);
       });
   }, []);
 
@@ -52,9 +44,39 @@ export default function Home() {
       })
       .then((data) => {
         setGithubUser(data);
-        console.log(data);
       });
   }, []);
+
+  //API GRAPHQL
+    const TOKEN = "25acca2b4d69b8028d5c4269bc2946";
+    const URL = "https://graphql.datocms.com/";
+
+    useEffect(() => {
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: TOKEN,
+      },
+      body: JSON.stringify({
+        query: `query {
+        allCommunities {
+          title
+          imageUrl
+          creatorId
+        }
+      }`,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setComunidades(response.data.allCommunities);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    });
 
   return (
     <>

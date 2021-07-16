@@ -59,10 +59,10 @@ export const ComunidadesBox = (prop) => {
         {prop.comunidades.slice(0, 6).map((comunidade) => {
           return (
             <li key={comunidade.id}>
-              <a href={`/users/${comunidade.title}`}>
+              <a href={`/comunidades/${comunidade.title}`}>
                 <img
                   src={
-                    `${comunidade.image}` ||
+                    `${comunidade.imageUrl}` ||
                     `https://img10.orkut.br.com/community/af2fb86433daea87670db780fa7c556b.jpeg`
                   }
                   alt="Comunidade Picture"

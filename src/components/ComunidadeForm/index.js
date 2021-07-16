@@ -1,6 +1,7 @@
 import Box from "../Box";
 
 const ComunidadeForm = (prop) => {
+  const user = "archianne";
   return (
     <Box>
       <h2 className="smallTitle">O que você deseja fazer?</h2>
@@ -11,13 +12,25 @@ const ComunidadeForm = (prop) => {
           const dataForm = new FormData(e.target);
 
           const comunidade = {
-            id: new Date(),
+            // id: new Date(),
             title: dataForm.get("title"),
-            image: dataForm.get("image"),
+            imageUrl: dataForm.get("imageUrl"),
+            creatorId: user,
           };
-          const comunidadesAtt = [...prop.comunidades, comunidade];
-          prop.setComunidades(comunidadesAtt);
-          console.log(prop.comunidades);
+
+          fetch("/api/comunidades", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(comunidade),
+          }).then(async (response) => {
+            const data = await response.json();
+            const comunidade = data.registerCreated;
+            const comunidadesAtt = [comunidade, ...prop.comunidades];
+            prop.setComunidades(comunidadesAtt);
+            console.log(data);
+          });
         }}
       >
         <input
@@ -29,7 +42,7 @@ const ComunidadeForm = (prop) => {
         <input
           placeholder="Coloque uma URL para usarmos de capa"
           type="text"
-          name="image"
+          name="imageUrl"
           aria-label="Coloque uma URL para usarmos de capa"
         />
         <button>Criar comunidade</button>
