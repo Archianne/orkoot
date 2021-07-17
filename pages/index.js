@@ -38,7 +38,7 @@ const HomePage = (props) => {
   }, []);
 
   //API GRAPHQL
-  const TOKEN = "25acca2b4d69b8028d5c4269bc2946";
+  const TOKEN = "fc4d4558e7f8f7979209609b36261d";
   const URL = "https://graphql.datocms.com/";
 
   useEffect(() => {
