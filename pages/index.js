@@ -103,16 +103,14 @@ const HomePage = (props) => {
 export default HomePage;
 
 export async function getServerSideProps(context) {
+  const URL = "https://alurakut.vercel.app/api/auth";
   const cookies = nookies.get(context);
   const token = cookies.USER_TOKEN;
-  const { isAuthenticated } = await fetch(
-    "https://alurakut.vercel.app/api/auth",
-    {
-      headers: {
-        Authorization: token,
-      },
-    }
-  ).then((response) => response.json());
+  const { isAuthenticated } = await fetch(URL, {
+    headers: {
+      Authorization: token,
+    },
+  }).then((response) => response.json());
 
   if (!isAuthenticated) {
     return {

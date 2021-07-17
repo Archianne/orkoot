@@ -11,11 +11,10 @@ export const Styles = css`
     background: #f1f1f1;
   }
   *::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+    background: #308bc5;
   }
   *::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #888;
   }
 
   a,

@@ -31,7 +31,7 @@ ${Styles}
 
 const theme = {
   colors: {
-    primary: "#0070f3",
+    primary: "#308bc5",
   },
 };
 
