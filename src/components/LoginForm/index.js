@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router"; //NextJS Hook
 import nookies from "nookies";
-
 const correctPassword = "alurakut";
 
 const LoginForm = () => {

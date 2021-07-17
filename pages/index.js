@@ -9,6 +9,7 @@ import NostalgicIconSet from "../src/components/NostalgicIconSet";
 import ComunidadeForm from "../src/components/ComunidadeForm";
 import { FollowersBox, ComunidadesBox } from "../src/components/SocialAreaBox";
 
+
 const HomePage = (props) => {
   const user = props.githubUser;
   const [comunidades, setComunidades] = useState([]);
